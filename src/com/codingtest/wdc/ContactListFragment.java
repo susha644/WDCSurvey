@@ -183,4 +183,10 @@ public class ContactListFragment extends ListFragment implements RestConsumer {
 		Log.e(TAG, msg, exception);
 		Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
 	}
+
+	@Override
+	public void onUpdateRecord() {
+		String msg = "Contact survey has been updated";
+		Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+	}
 }

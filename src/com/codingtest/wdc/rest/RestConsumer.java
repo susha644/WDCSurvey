@@ -11,4 +11,5 @@ public interface RestConsumer {
 	void onRestClientAvailable(RestClient client);
 	void onSuccessResult(List<JSONObject> records);
 	void onErrorResult(Exception exception);
+	void onUpdateRecord();
 }

@@ -1,15 +1,15 @@
 package com.codingtest.wdc.rest;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
-import org.apache.http.ParseException;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.util.Log;
 
 import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestClient.AsyncRequestCallback;
@@ -59,6 +59,7 @@ public class RestUtil {
 				public void onSuccess(RestRequest request, RestResponse response) {
 					try {
 						consumer.onSuccessResult(Collections.singletonList(response.asJSONObject()));
+						Log.d("RestUtil", response.asJSONObject().toString());
 					} catch (Exception e) {
 						onError(e);
 					}
@@ -72,6 +73,33 @@ public class RestUtil {
 			
 		} catch (UnsupportedEncodingException uee) {
 			consumer.onErrorResult(uee);
+		}
+	}
+	
+	public static void updateSObject(RestClient client, String apiVersion, String objectType, String objectId, Map<String, Object> fields, final RestConsumer consumer) {
+		
+		try {
+			RestRequest restRequest = RestRequest.getRequestForUpdate(apiVersion, objectType, objectId, fields);
+			
+			client.sendAsync(restRequest, new AsyncRequestCallback() {
+				
+				@Override
+				public void onSuccess(RestRequest request, RestResponse response) {
+					try {
+					consumer.onUpdateRecord();
+					} catch (Exception e) {
+						onError(e);
+					}
+				}
+				
+				@Override
+				public void onError(Exception exception) {
+					consumer.onErrorResult(exception);
+				}
+			});
+			
+		} catch (Exception e) {
+			consumer.onErrorResult(e);
 		}
 	}
 

@@ -5,15 +5,121 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textIsSelectable="true"
-    tools:context=".ContactDetailFragment">
+    tools:context=".ContactDetailFragment"
+    android:orientation="vertical">
 
     <RelativeLayout 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
         <TextView 
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/contact_name"
-          />
+            android:id="@+id/accountLabel"
+            android:layout_margin="20dip"
+            android:text="Account" />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/accountDetail" 
+            android:text="Grand Hotels and Resorts Ltd"
+            android:layout_below="@+id/accountLabel"/>
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleLabel"
+            android:layout_toRightOf="@+id/accountLabel"
+            android:text="Title"
+            android:gravity="right|top"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="20dip"
+            android:layout_marginTop="20dip"
+            android:layout_marginBottom="20dip"
+            android:layout_marginRight="100dip" />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleDetail" 
+            android:layout_below="@+id/titleLabel"
+            android:layout_toRightOf="@+id/accountDetail"
+            android:text="SVP, Administration and Finance"
+            android:gravity="left"
+            android:layout_alignParentRight="true"
+            android:layout_alignBaseline="@+id/accountDetail"
+            android:layout_marginLeft="30dip" />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emailLabel"
+            android:layout_below="@+id/accountDetail"
+            android:text="Email"
+            android:layout_margin="20dip" />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emailDetail" 
+            android:layout_below="@+id/emailLabel"
+            android:text="usha.sanaga@gmail.com"/>
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/phoneLabel"
+            android:layout_toRightOf="@+id/emailLabel"
+            android:layout_below="@+id/titleDetail"
+            android:text="Phone"
+            android:gravity="right|top"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="20dip"
+            android:layout_marginBottom="20dip"
+            android:layout_marginRight="100dip" />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/phoneDetail" 
+            android:layout_below="@+id/phoneLabel"
+            android:layout_toRightOf="@+id/emailDetail"
+            android:text="312-618-8507"
+            android:gravity="left"
+            android:layout_alignLeft="@+id/titleDetail"
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
+    
+    <View 
+        android:layout_width="100dip"
+        android:layout_height="1dip"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/divider" />
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/questionLabel1" 
+        android:text="Question1" />
+    <EditText 
+        android:layout_width="500dip"
+        android:layout_height="40dip"
+        android:id="@+id/questionEditText1" />
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/questionLabel2" 
+        android:text="Question2" />
+    <EditText 
+        android:layout_width="500dip"
+        android:layout_height="40dip"
+        android:id="@+id/questionEditText2" />
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/questionLabel3" 
+        android:text="Question3" />
+    <EditText 
+        android:layout_width="500dip"
+        android:layout_height="40dip"
+        android:id="@+id/questionEditText3" />
+    <Button 
+        android:layout_width="100dip"
+        android:layout_height="50dip"
+        android:text="Submit"
+        android:layout_marginTop="50dip"
+        android:id="@+id/submitButton"/>
+    
 </LinearLayout>
