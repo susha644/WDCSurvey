@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.codingtest.wdc.R;
+import com.codingtest.wdc.R.string;
 import com.codingtest.wdc.adapter.ContactJSONArrayAdapter;
 import com.codingtest.wdc.model.Contact;
 import com.codingtest.wdc.rest.RestConsumer;

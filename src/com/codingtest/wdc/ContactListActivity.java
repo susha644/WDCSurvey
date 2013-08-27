@@ -30,6 +30,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.codingtest.wdc.R;
+import com.codingtest.wdc.R.id;
+import com.codingtest.wdc.R.layout;
 import com.salesforce.androidsdk.rest.RestClient;
 
 /**
@@ -72,7 +75,7 @@ public class ContactListActivity extends SalesforceFragmentActivity implements C
 		
 		// Hide everything until we are logged in
 		if (mTwoPane) {
-			findViewById(R.id.contact_twopane_container).setVisibility(View.INVISIBLE);
+			findViewById(R.id.contact_detail_container).setVisibility(View.INVISIBLE);
 		} else {
 			findViewById(R.id.contact_list).setVisibility(View.INVISIBLE);
 		}
@@ -85,7 +88,7 @@ public class ContactListActivity extends SalesforceFragmentActivity implements C
 		// distribute the client show everything as we are logged in
 		((ContactListFragment) getSupportFragmentManager().findFragmentById(R.id.contact_list)).onRestClientAvailable(client);
 		if (mTwoPane) {
-			findViewById(R.id.contact_twopane_container).setVisibility(View.VISIBLE);
+			findViewById(R.id.contact_detail_container).setVisibility(View.VISIBLE);
 		} else {
 			findViewById(R.id.contact_list).setVisibility(View.VISIBLE);
 		}

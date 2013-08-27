@@ -23,7 +23,7 @@
 		</service>
 
 		<!-- Launcher screen -->
-		<activity android:name=".ContactListActivity"
+		<activity android:name="com.codingtest.wdc.ContactListActivity"
 		    android:label="@string/app_name"
 			android:theme="@style/Theme.AppCompat.Light">
 			<intent-filter>

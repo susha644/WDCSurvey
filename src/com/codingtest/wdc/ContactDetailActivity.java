@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
+import com.codingtest.wdc.R;
+import com.codingtest.wdc.R.id;
+import com.codingtest.wdc.R.layout;
 import com.salesforce.androidsdk.rest.RestClient;
 
 /**

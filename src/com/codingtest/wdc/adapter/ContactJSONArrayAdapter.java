@@ -7,13 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.codingtest.wdc.R;
 import com.codingtest.wdc.model.Contact;
 
 public class ContactJSONArrayAdapter extends ArrayAdapter<Contact> {
 	private Context ctx;
 
 	public ContactJSONArrayAdapter(Context ctx) {
-		super(ctx, android.R.layout.simple_list_item_activated_1);
+		super(ctx, R.layout.contact_list_textview);
 		this.ctx = ctx;		
 	}
 	
@@ -22,13 +23,18 @@ public class ContactJSONArrayAdapter extends ArrayAdapter<Contact> {
 		TextView textView = null;
 		
 		if (convertView == null) {
-			textView = (TextView) LayoutInflater.from(ctx).inflate(android.R.layout.simple_expandable_list_item_1, null);
+			textView = (TextView) LayoutInflater.from(ctx).inflate(R.layout.contact_list_textview, null);
 		} else {
 			textView = (TextView) convertView;
 		}
+		if(position % 2 == 0)
+			textView.setBackgroundColor(ctx.getResources().getColor(android.R.color.darker_gray));
+		else 
+			textView.setBackgroundColor(ctx.getResources().getColor(android.R.color.white));
 		
+		textView.setHeight(70);
 		textView.setText(getItem(position).getName());
-		
+	
 		return textView;
 	}
 }

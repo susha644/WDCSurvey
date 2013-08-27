@@ -8,16 +8,17 @@ import java.util.Map;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +48,7 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 	//private DummyContent.DummyItem mItem;
 
 	private String mContactId = null;
-	private Contact mContact = null;
+//	private Contact mContact = null;
 	private RestClient mClient = null;
 	
 	private static final String OBJECT_TYPE = "Contact";
@@ -88,7 +89,7 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_contact_detail, container, false);
 		
-		Button submitButton = (Button) mRootView.findViewById(R.id.submitButton);
+		Button submitButton = (Button) mRootView.findViewById(R.id.submit_button);
 		submitButton.setOnClickListener(this);
 		return mRootView;
 	}
@@ -107,16 +108,42 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 
 	@Override
 	public void onSuccessResult(List<JSONObject> records) {
-		mContact = new Contact(records.get(0));
+		Contact contact = new Contact(records.get(0));
 		
-		TextView accountView = (TextView) mRootView.findViewById(R.id.accountDetail);
-		TextView titleView = (TextView) mRootView.findViewById(R.id.titleDetail);
-		TextView emailView = (TextView) mRootView.findViewById(R.id.emailDetail);
-		TextView phoneView = (TextView) mRootView.findViewById(R.id.phoneDetail);
-		accountView.setText(mContact.getAccount());
-		titleView.setText(mContact.getTitle());
-		emailView.setText(mContact.getEmail());
-		phoneView.setText(mContact.getPhone());
+		setContactDetailsOnUI(contact);
+	}
+	
+	private void setContactDetailsOnUI(Contact contact)
+	{
+		LinearLayout linearLayout = (LinearLayout) mRootView.findViewById(R.id.detail_top_layout);
+		linearLayout.setVisibility(View.VISIBLE);
+		
+		TextView greetingText = (TextView) mRootView.findViewById(R.id.detail_greeting);
+		greetingText.setVisibility(View.INVISIBLE);
+		
+		TextView accountView = (TextView) mRootView.findViewById(R.id.account_detail_label);
+		TextView titleView = (TextView) mRootView.findViewById(R.id.title_detail_label);
+		TextView emailView = (TextView) mRootView.findViewById(R.id.email_detail_label);
+		TextView phoneView = (TextView) mRootView.findViewById(R.id.phone_detail_label);
+		EditText question1View = (EditText) mRootView.findViewById(R.id.question_1_hint);
+		EditText question2View = (EditText) mRootView.findViewById(R.id.question_2_hint);
+		EditText question3View = (EditText) mRootView.findViewById(R.id.question_3_hint);
+
+		accountView.setText(contact.getAccount());
+		titleView.setText(contact.getTitle());
+		emailView.setText(contact.getEmail());
+		phoneView.setText(contact.getPhone());
+		Log.d("ContactDetailFragment", contact.getQuestion1());
+		Log.d("ContactDetailFragment", contact.getQuestion2());
+		Log.d("ContactDetailFragment", contact.getQuestion3());
+
+		if (contact.getQuestion1() != null)
+			question1View.setText(contact.getQuestion1());
+		if (contact.getQuestion2() != null)
+			question2View.setText(contact.getQuestion2());
+		if (contact.getQuestion3() != null)
+			question3View.setText(contact.getQuestion3());
+
 	}
 
 	@Override
@@ -132,9 +159,9 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 
 	@Override
 	public void onClick(View v) {
-		EditText question1EditText = (EditText) mRootView.findViewById(R.id.questionEditText1);
-		EditText question2EditText = (EditText) mRootView.findViewById(R.id.questionEditText2);
-		EditText question3EditText = (EditText) mRootView.findViewById(R.id.questionEditText3);
+		EditText question1EditText = (EditText) mRootView.findViewById(R.id.question_1_hint);
+		EditText question2EditText = (EditText) mRootView.findViewById(R.id.question_2_hint);
+		EditText question3EditText = (EditText) mRootView.findViewById(R.id.question_3_hint);
 		
 		Map<String, Object> surveyValues = new HashMap<String, Object>();
 		surveyValues.put("Question_1__c", question1EditText.getText().toString());

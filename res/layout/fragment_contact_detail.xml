@@ -1,125 +1,166 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contact_detail"
-    style="?android:attr/textAppearanceLarge"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:textIsSelectable="true"
-    tools:context=".ContactDetailFragment"
-    android:orientation="vertical">
-
-    <RelativeLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/accountLabel"
-            android:layout_margin="20dip"
-            android:text="Account" />
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/accountDetail" 
-            android:text="Grand Hotels and Resorts Ltd"
-            android:layout_below="@+id/accountLabel"/>
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/titleLabel"
-            android:layout_toRightOf="@+id/accountLabel"
-            android:text="Title"
-            android:gravity="right|top"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="20dip"
-            android:layout_marginTop="20dip"
-            android:layout_marginBottom="20dip"
-            android:layout_marginRight="100dip" />
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/titleDetail" 
-            android:layout_below="@+id/titleLabel"
-            android:layout_toRightOf="@+id/accountDetail"
-            android:text="SVP, Administration and Finance"
-            android:gravity="left"
-            android:layout_alignParentRight="true"
-            android:layout_alignBaseline="@+id/accountDetail"
-            android:layout_marginLeft="30dip" />
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/emailLabel"
-            android:layout_below="@+id/accountDetail"
-            android:text="Email"
-            android:layout_margin="20dip" />
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/emailDetail" 
-            android:layout_below="@+id/emailLabel"
-            android:text="usha.sanaga@gmail.com"/>
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/phoneLabel"
-            android:layout_toRightOf="@+id/emailLabel"
-            android:layout_below="@+id/titleDetail"
-            android:text="Phone"
-            android:gravity="right|top"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="20dip"
-            android:layout_marginBottom="20dip"
-            android:layout_marginRight="100dip" />
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/phoneDetail" 
-            android:layout_below="@+id/phoneLabel"
-            android:layout_toRightOf="@+id/emailDetail"
-            android:text="312-618-8507"
-            android:gravity="left"
-            android:layout_alignLeft="@+id/titleDetail"
-            android:layout_alignParentRight="true" />
-    </RelativeLayout>
-    
-    <View 
-        android:layout_width="100dip"
-        android:layout_height="1dip"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/divider" />
-    <TextView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/questionLabel1" 
-        android:text="Question1" />
-    <EditText 
-        android:layout_width="500dip"
-        android:layout_height="40dip"
-        android:id="@+id/questionEditText1" />
-    <TextView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/questionLabel2" 
-        android:text="Question2" />
-    <EditText 
-        android:layout_width="500dip"
-        android:layout_height="40dip"
-        android:id="@+id/questionEditText2" />
-    <TextView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/questionLabel3" 
-        android:text="Question3" />
-    <EditText 
-        android:layout_width="500dip"
-        android:layout_height="40dip"
-        android:id="@+id/questionEditText3" />
-    <Button 
-        android:layout_width="100dip"
-        android:layout_height="50dip"
-        android:text="Submit"
-        android:layout_marginTop="50dip"
-        android:id="@+id/submitButton"/>
-    
-</LinearLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical" >
+    <ScrollView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"> 
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" 
+	        android:id="@+id/detail_top_layout"
+	        android:visibility="invisible" >
+		<TableLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent" >
+		    <TableRow
+		        android:id="@+id/row1"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+		        android:padding="20dip" >
+		        <TextView
+		            android:id="@+id/account_label"
+		            android:text="Account" 
+		            style="@style/LabelText"
+		            android:layout_weight="1"/>
+		        <TextView
+		            android:id="@+id/title_label"
+		            android:text="Title"
+		            style="@style/LabelText"
+		            android:layout_weight="1" />
+		    </TableRow>
+		    <TableRow
+		        android:id="@+id/row2"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="20dip"
+		        android:layout_marginRight="20dip" >
+		
+		        <TextView
+		            android:id="@+id/account_detail_label"
+		            android:layout_weight="1"
+		            android:text="Grand Hotels &amp; Resorts Ltd"
+		            style="@style/LabelDetailText" />
+		
+		        <TextView
+		            android:id="@+id/title_detail_label"
+		            android:text="SVP, Administration and Finance"
+		            style="@style/LabelDetailText"
+		            android:layout_weight="1" />
+		    </TableRow>
+		    <TableRow
+		        android:id="@+id/row3"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+		        android:padding="20dip" >
+		        <TextView
+		            android:id="@+id/email_label"
+		            android:text="Email"
+		            style="@style/LabelText"
+		            android:layout_weight="1" />
+		        <TextView
+		            android:id="@+id/phone_label"
+		            android:text="Phone"
+		            style="@style/LabelText"
+		            android:layout_weight="1" />
+		    </TableRow>
+		    <TableRow
+		        android:id="@+id/row4"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content" 
+		        android:layout_marginLeft="20dip"
+		        android:layout_marginRight="20dip" >
+		        <TextView
+		            android:id="@+id/email_detail_label"
+		            android:text="usha.sanaga@gmail.com"
+		            style="@style/LabelDetailText"
+		            android:layout_weight="1" />
+		        <TextView
+		            android:id="@+id/phone_detail_label"
+		            android:text="312-762-2491"
+		            android:textSize="12sp"
+		            style="@style/LabelDetailText"
+		            android:layout_weight="1" />
+		    </TableRow>
+		</TableLayout>
+	    <View 
+		     android:layout_width="200dip"
+		     android:layout_height="1dip"
+		     android:id="@+id/divider"
+		     android:layout_marginTop="20dip"
+		     android:layout_gravity="center_horizontal"
+		     android:background="@android:color/darker_gray" />
+		    
+	     <TextView 
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_marginRight="20dip"
+		      android:layout_marginLeft="20dip"
+		      android:layout_marginTop="20dip"
+		      android:layout_marginBottom="5dip"
+		      style="@style/EditTextLabel"
+		      android:text="How did you like your world domination products and services?" 
+		      android:id="@+id/question_1"/>
+	     <EditText 
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_marginLeft="20dip"
+		   	  android:layout_marginRight="20dip"
+		   	  android:hint="answer" 
+		   	  style="@style/EditText"
+		   	  android:id="@+id/question_1_hint"/>
+	     <TextView 
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_marginRight="20dip"
+		      android:layout_marginLeft="20dip"
+		      android:layout_marginTop="20dip"
+		      android:layout_marginBottom="5dip"
+		      style="@style/EditTextLabel"
+		      android:text="Were the services dominationg enough?"
+		      android:id="@+id/question_2" />
+	     <EditText 
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_marginLeft="20dip"
+		   	  android:layout_marginRight="20dip"
+		   	  android:hint="answer"
+		   	  style="@style/EditText"
+		   	  android:id="@+id/question_2_hint" />
+	     <TextView 
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_marginRight="20dip"
+		      android:layout_marginLeft="20dip"
+		      android:layout_marginTop="20dip"
+		      android:layout_marginBottom="5dip"
+		      style="@style/EditTextLabel"
+		      android:text="In what ways could we have been more dominating?"
+		      android:id="@+id/question_3" />
+	     <EditText 
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_marginLeft="20dip"
+		   	  android:layout_marginRight="20dip"
+		   	  android:hint="answer"
+		   	  style="@style/EditText"
+		   	  android:id="@+id/question_3_hint" />	
+		  <Button 
+		      android:layout_width="100dip"
+		      android:layout_height="40dip"
+		      android:text="Submit"
+		      android:layout_marginRight="20dip"
+		      android:layout_marginTop="10dip"
+		      android:layout_gravity="right"
+		      android:id="@+id/submit_button"/>
+		  </LinearLayout>
+	</ScrollView>
+	<TextView 
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content"
+	      android:layout_centerInParent="true"
+	      android:id="@+id/detail_greeting"
+	      android:text="Select contact on left side." /> 
+</RelativeLayout>
