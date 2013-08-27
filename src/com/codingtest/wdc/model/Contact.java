@@ -62,7 +62,8 @@ public class Contact {
 		} catch (JSONException e) {
 			Log.e(TAG, "Error getting contact name", e);
 		}
-		
+		if (value.equals("null"))
+			value = "";
 		return value;
 	}
 }
