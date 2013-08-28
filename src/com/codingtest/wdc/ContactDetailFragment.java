@@ -8,6 +8,7 @@ import java.util.Map;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -59,6 +60,7 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 	private View mRootView;
 	private String mContactId = null;
 	private RestClient mClient = null;
+	private ProgressDialog mProgressDialog = null;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -111,10 +113,16 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 		
 		// make  a rest call to to retrieve 
 		RestUtil.getSObject(client, getString(R.string.api_version), OBJECT_TYPE, mContactId, FIELD_LIST, this);
+		mProgressDialog = new ProgressDialog(getActivity());
+		mProgressDialog.setMessage("Loading contact details...");
+        mProgressDialog.show();
 	}
 
 	@Override
 	public void onSuccessResult(List<JSONObject> records) {
+		if (mProgressDialog.isShowing()) 
+			mProgressDialog.dismiss();
+		
 		Contact contact = new Contact(records.get(0));
 		
 		// set the details of the contact on the detail side
