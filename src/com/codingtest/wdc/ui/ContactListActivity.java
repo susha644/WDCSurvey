@@ -1,4 +1,4 @@
- package com.codingtest.wdc;
+ package com.codingtest.wdc.ui;
 /*
  * Copyright (c) 2012, salesforce.com, inc.
  * All rights reserved.
@@ -31,8 +31,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.codingtest.wdc.R;
-import com.codingtest.wdc.R.id;
-import com.codingtest.wdc.R.layout;
+import com.codingtest.wdc.SalesforceFragmentActivity;
 import com.salesforce.androidsdk.rest.RestClient;
 
 /**

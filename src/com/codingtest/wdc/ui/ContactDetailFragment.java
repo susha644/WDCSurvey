@@ -1,4 +1,4 @@
-package com.codingtest.wdc;
+package com.codingtest.wdc.ui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.codingtest.wdc.R;
 import com.codingtest.wdc.model.Contact;
 import com.codingtest.wdc.rest.RestConsumer;
 import com.codingtest.wdc.rest.RestUtil;

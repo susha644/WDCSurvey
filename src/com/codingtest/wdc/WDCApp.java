@@ -28,6 +28,7 @@ package com.codingtest.wdc;
 
 import android.app.Application;
 
+import com.codingtest.wdc.ui.ContactListActivity;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 
 /**

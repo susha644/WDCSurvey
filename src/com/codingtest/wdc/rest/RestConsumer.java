@@ -2,7 +2,6 @@ package com.codingtest.wdc.rest;
 
 import java.util.List;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.salesforce.androidsdk.rest.RestClient;
