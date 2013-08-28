@@ -24,18 +24,17 @@ public class ContactJSONArrayAdapter extends ArrayAdapter<Contact> {
 		
 		if (convertView == null) {
 			textView = (TextView) LayoutInflater.from(ctx).inflate(R.layout.contact_list_textview, null);
+			textView.setBackgroundColor(ctx.getResources().getColor(position % 2 == 0 ? android.R.color.darker_gray : android.R.color.white));
 		} else {
 			textView = (TextView) convertView;
 		}
-		if(position % 2 == 0)
-			textView.setBackgroundColor(ctx.getResources().getColor(android.R.color.darker_gray));
-		else 
-			textView.setBackgroundColor(ctx.getResources().getColor(android.R.color.white));
+		
 		
 		textView.setHeight(70);
+
 		String firstName = getItem(position).getFirstName();
 		String lastName = getItem(position).getLastName();
-		textView.setText(lastName+", "+firstName);
+		textView.setText(lastName + ", " + firstName);
 	
 		return textView;
 	}

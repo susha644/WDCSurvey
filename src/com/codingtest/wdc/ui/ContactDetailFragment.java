@@ -53,7 +53,6 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 
 	{
 		add("Id");
-		add("Name");
 		add("Firstname");
 		add("Lastname");
 		add("Account.name");

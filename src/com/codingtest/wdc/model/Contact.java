@@ -15,10 +15,6 @@ public class Contact {
 		this.holder = holder;
 	}
 	
-	public String getName() {
-		return getStringPropertySafe("Name", "No Name");
-	}
-	
 	public String getFirstName() {
 		return getStringPropertySafe("FirstName", "No FirstName");
 	}
@@ -36,7 +32,7 @@ public class Contact {
 		try {
 			value = holder.getJSONObject("Account").getString("Name");
 		} catch (JSONException e) {
-			Log.e(TAG, "Error getting contact name", e);
+			Log.e(TAG, "Error getting account name", e);
 		}
 		
 		return value;
@@ -67,11 +63,13 @@ public class Contact {
 		String value = defValue;
 		try {
 			value = holder.getString(prop);
+			if (value.equals("null")) { // handle null in JSON
+				value = "";
+			}
 		} catch (JSONException e) {
-			Log.e(TAG, "Error getting"+ prop, e);
+			Log.e(TAG, "Error getting "+ prop, e);
 		}
-		if (value.equals("null"))
-			value = "";
+
 		return value;
 	}
 }

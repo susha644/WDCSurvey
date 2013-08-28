@@ -82,10 +82,12 @@
 		    </TableRow>
 		</TableLayout>
 	    <View 
-		     android:layout_width="200dip"
+		     android:layout_width="match_parent"
 		     android:layout_height="1dip"
 		     android:id="@+id/divider"
 		     android:layout_marginTop="20dip"
+             android:layout_marginLeft="10dip"
+             android:layout_marginRight="10dip"
 		     android:layout_gravity="center_horizontal"
 		     android:background="@android:color/darker_gray" />
 		    

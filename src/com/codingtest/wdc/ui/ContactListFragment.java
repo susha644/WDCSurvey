@@ -175,6 +175,7 @@ public class ContactListFragment extends ListFragment implements RestConsumer {
 			contacts.add(new Contact(jsonObject));
 		}
 		
+		mAdapter.clear();
 		mAdapter.addAll(contacts);
 	}
 

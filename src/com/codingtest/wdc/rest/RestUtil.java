@@ -11,14 +11,19 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
+import com.salesforce.androidsdk.auth.HttpAccess;
 import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestClient.AsyncRequestCallback;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
 
 public class RestUtil {
+	
+	// USED ONLY FOR TESTING
+	public static HttpAccess HTTP_ACCESOR;
+	
 	public static void sendRequest(RestClient client, String soql, String apiVersion, final RestConsumer consumer) {
-		
+		overrideHttpAccessor(client);
 		try {
 			RestRequest restRequest = RestRequest.getRequestForQuery(apiVersion, soql);
 			
@@ -49,7 +54,14 @@ public class RestUtil {
 		}
 	}
 	
+	private static void overrideHttpAccessor(RestClient client) {
+		if (HTTP_ACCESOR != null) {
+			client.setHttpAccessor(HTTP_ACCESOR);
+		}
+	}
+
 	public static void getSObject(RestClient client, String apiVersion, String objectType, String objectId, List<String> fieldList, final RestConsumer consumer) {
+		overrideHttpAccessor(client);
 		try {
 			RestRequest restRequest = RestRequest.getRequestForRetrieve(apiVersion, objectType, objectId, fieldList);
 			
@@ -59,7 +71,6 @@ public class RestUtil {
 				public void onSuccess(RestRequest request, RestResponse response) {
 					try {
 						consumer.onSuccessResult(Collections.singletonList(response.asJSONObject()));
-						Log.d("RestUtil", response.asJSONObject().toString());
 					} catch (Exception e) {
 						onError(e);
 					}
@@ -77,7 +88,7 @@ public class RestUtil {
 	}
 	
 	public static void updateSObject(RestClient client, String apiVersion, String objectType, String objectId, Map<String, Object> fields, final RestConsumer consumer) {
-		
+		overrideHttpAccessor(client);
 		try {
 			RestRequest restRequest = RestRequest.getRequestForUpdate(apiVersion, objectType, objectId, fields);
 			
