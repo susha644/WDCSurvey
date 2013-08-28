@@ -8,14 +8,12 @@ import java.util.Map;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -43,14 +41,8 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 	public static final String ARG_ITEM_ID = "item_id";
 
 	/**
-	 * The dummy content this fragment is presenting.
+	 * The content this fragment is presenting.
 	 */
-	//private DummyContent.DummyItem mItem;
-
-	private String mContactId = null;
-//	private Contact mContact = null;
-	private RestClient mClient = null;
-	
 	private static final String OBJECT_TYPE = "Contact";
 	private static final List<String> FIELD_LIST = new ArrayList<String>() {{
 		add("Id");
@@ -65,6 +57,8 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 	}};
 
 	private View mRootView;
+	private String mContactId = null;
+	private RestClient mClient = null;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -78,7 +72,7 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 		super.onCreate(savedInstanceState);
 
 		if (getArguments() != null && getArguments().containsKey(ARG_ITEM_ID)) {
-			// Load the dummy content specified by the fragment
+			// Load the content specified by the fragment
 			// arguments. In a real-world scenario, use a Loader
 			// to load content from a content provider.
 			mContactId = getArguments().getString(ARG_ITEM_ID);
@@ -87,10 +81,13 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		// get the detail fragment
 		mRootView = inflater.inflate(R.layout.fragment_contact_detail, container, false);
 		
+		// get the submit button and set onClick listener
 		Button submitButton = (Button) mRootView.findViewById(R.id.submit_button);
 		submitButton.setOnClickListener(this);
+		
 		return mRootView;
 	}
 	
@@ -99,10 +96,20 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 		super.onAttach(getActivity());
 		Log.i(TAG, "Activity attached");
 	}
+	
+	public void setContactId(String contactId) {
+		this.mContactId = contactId;
+	}
 
 	@Override
 	public void onRestClientAvailable(RestClient client) {
 		this.mClient = client;
+		
+		// Hide the greeting text on the detail as the list item is selected
+		TextView greetingText = (TextView) mRootView.findViewById(R.id.detail_greeting);
+		greetingText.setVisibility(View.INVISIBLE);
+		
+		// make  a rest call to to retrieve 
 		RestUtil.getSObject(client, getString(R.string.api_version), OBJECT_TYPE, mContactId, FIELD_LIST, this);
 	}
 
@@ -110,6 +117,7 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 	public void onSuccessResult(List<JSONObject> records) {
 		Contact contact = new Contact(records.get(0));
 		
+		// set the details of the contact on the detail side
 		setContactDetailsOnUI(contact);
 	}
 	
@@ -117,9 +125,6 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 	{
 		LinearLayout linearLayout = (LinearLayout) mRootView.findViewById(R.id.detail_top_layout);
 		linearLayout.setVisibility(View.VISIBLE);
-		
-		TextView greetingText = (TextView) mRootView.findViewById(R.id.detail_greeting);
-		greetingText.setVisibility(View.INVISIBLE);
 		
 		TextView accountView = (TextView) mRootView.findViewById(R.id.account_detail_label);
 		TextView titleView = (TextView) mRootView.findViewById(R.id.title_detail_label);
@@ -133,17 +138,9 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 		titleView.setText(contact.getTitle());
 		emailView.setText(contact.getEmail());
 		phoneView.setText(contact.getPhone());
-		Log.d("ContactDetailFragment", contact.getQuestion1());
-		Log.d("ContactDetailFragment", contact.getQuestion2());
-		Log.d("ContactDetailFragment", contact.getQuestion3());
-
-		if (contact.getQuestion1() != null)
-			question1View.setText(contact.getQuestion1());
-		if (contact.getQuestion2() != null)
-			question2View.setText(contact.getQuestion2());
-		if (contact.getQuestion3() != null)
-			question3View.setText(contact.getQuestion3());
-
+		question1View.setText(contact.getQuestion1());
+		question2View.setText(contact.getQuestion2());
+		question3View.setText(contact.getQuestion3());
 	}
 
 	@Override
@@ -153,10 +150,12 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 		Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();	
 	}
 	
-	public void setContactId(String contactId) {
-		this.mContactId = contactId;
+	@Override
+	public void onUpdateRecord() {
+		String msg = "Contact survey has been updated";
+		Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();		
 	}
-
+	
 	@Override
 	public void onClick(View v) {
 		EditText question1EditText = (EditText) mRootView.findViewById(R.id.question_1_hint);
@@ -172,11 +171,4 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 		RestUtil.updateSObject(mClient, getString(R.string.api_version), OBJECT_TYPE, mContactId, surveyValues, this);
 
 	}
-
-	@Override
-	public void onUpdateRecord() {
-		String msg = "Contact survey has been updated";
-		Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();		
-	}
-	
 }

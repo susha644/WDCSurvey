@@ -4,5 +4,20 @@
 	<string name="app_name"><b>WDC</b></string>
 	<string name="api_version">v28.0</string>
     <string name="title_contact_detail">Contact Detail</string>
-    <string name="action_logout">Logout</string>		
+    <string name="action_logout">Logout</string>	
+    
+    <!-- fragment_contact_detail.xml strings -->
+    	<string name="account_label">Account</string>
+    	<string name="title_label">Title</string>
+    	<string name="email_label">Email</string>
+    	<string name="phone_label">Phone</string>
+    	<string name="question_1_label">How did you like your world domination products and services?</string>
+    	<string name="question_2_label">Were the services dominationg enough?</string>
+    	<string name="question_3_label">In what ways could we have been more dominating?</string>
+    	<string name="question_1_hint">Tell us in 255 words</string>
+    	<string name="question_2_hint">Tell us in 255 words</string>
+    	<string name="question_3_hint">Tell us in 255 words</string>
+    	<string name="submit_button_label">Submit</string>
+    	<string name="detail_greeting_msg">Please select the contact on left side to see or update the survey</string>
+    
 </resources>

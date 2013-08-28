@@ -34,6 +34,7 @@ public class ContactJSONArrayAdapter extends ArrayAdapter<Contact> {
 		
 		textView.setHeight(70);
 		textView.setText(getItem(position).getName());
+		textView.setSelected(true);
 	
 		return textView;
 	}

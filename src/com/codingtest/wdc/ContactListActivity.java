@@ -1,4 +1,4 @@
-package com.codingtest.wdc;
+ package com.codingtest.wdc;
 /*
  * Copyright (c) 2012, salesforce.com, inc.
  * All rights reserved.
@@ -64,6 +64,8 @@ public class ContactListActivity extends SalesforceFragmentActivity implements C
 			((ContactListFragment) getSupportFragmentManager().findFragmentById(R.id.contact_list)).setActivateOnItemClick(true);
 			
 			mDetailFragment = new ContactDetailFragment();
+			
+			// replace fragment view once reuse it 
 			getSupportFragmentManager().beginTransaction().replace(R.id.contact_detail_container, mDetailFragment).commit();
 		}
 		
@@ -84,7 +86,7 @@ public class ContactListActivity extends SalesforceFragmentActivity implements C
 	@Override
 	public void onResume(RestClient client) {
 		this.mRestClient = client;
-		
+
 		// distribute the client show everything as we are logged in
 		((ContactListFragment) getSupportFragmentManager().findFragmentById(R.id.contact_list)).onRestClientAvailable(client);
 		if (mTwoPane) {

@@ -22,12 +22,12 @@
 		        android:padding="20dip" >
 		        <TextView
 		            android:id="@+id/account_label"
-		            android:text="Account" 
+		            android:text="@string/account_label"
 		            style="@style/LabelText"
 		            android:layout_weight="1"/>
 		        <TextView
 		            android:id="@+id/title_label"
-		            android:text="Title"
+		            android:text="@string/title_label"
 		            style="@style/LabelText"
 		            android:layout_weight="1" />
 		    </TableRow>
@@ -41,12 +41,10 @@
 		        <TextView
 		            android:id="@+id/account_detail_label"
 		            android:layout_weight="1"
-		            android:text="Grand Hotels &amp; Resorts Ltd"
 		            style="@style/LabelDetailText" />
 		
 		        <TextView
 		            android:id="@+id/title_detail_label"
-		            android:text="SVP, Administration and Finance"
 		            style="@style/LabelDetailText"
 		            android:layout_weight="1" />
 		    </TableRow>
@@ -57,12 +55,12 @@
 		        android:padding="20dip" >
 		        <TextView
 		            android:id="@+id/email_label"
-		            android:text="Email"
+		            android:text="@string/email_label"
 		            style="@style/LabelText"
 		            android:layout_weight="1" />
 		        <TextView
 		            android:id="@+id/phone_label"
-		            android:text="Phone"
+		            android:text="@string/phone_label"
 		            style="@style/LabelText"
 		            android:layout_weight="1" />
 		    </TableRow>
@@ -74,12 +72,10 @@
 		        android:layout_marginRight="20dip" >
 		        <TextView
 		            android:id="@+id/email_detail_label"
-		            android:text="usha.sanaga@gmail.com"
 		            style="@style/LabelDetailText"
 		            android:layout_weight="1" />
 		        <TextView
 		            android:id="@+id/phone_detail_label"
-		            android:text="312-762-2491"
 		            android:textSize="12sp"
 		            style="@style/LabelDetailText"
 		            android:layout_weight="1" />
@@ -101,14 +97,14 @@
 		      android:layout_marginTop="20dip"
 		      android:layout_marginBottom="5dip"
 		      style="@style/EditTextLabel"
-		      android:text="How did you like your world domination products and services?" 
+		      android:text="@string/question_1_label"
 		      android:id="@+id/question_1"/>
 	     <EditText 
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
 		      android:layout_marginLeft="20dip"
 		   	  android:layout_marginRight="20dip"
-		   	  android:hint="answer" 
+		   	  android:hint="@string/question_1_hint"
 		   	  style="@style/EditText"
 		   	  android:id="@+id/question_1_hint"/>
 	     <TextView 
@@ -119,14 +115,14 @@
 		      android:layout_marginTop="20dip"
 		      android:layout_marginBottom="5dip"
 		      style="@style/EditTextLabel"
-		      android:text="Were the services dominationg enough?"
+		      android:text="@string/question_2_label"
 		      android:id="@+id/question_2" />
 	     <EditText 
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
 		      android:layout_marginLeft="20dip"
 		   	  android:layout_marginRight="20dip"
-		   	  android:hint="answer"
+		   	  android:hint="@string/question_2_hint"
 		   	  style="@style/EditText"
 		   	  android:id="@+id/question_2_hint" />
 	     <TextView 
@@ -137,20 +133,20 @@
 		      android:layout_marginTop="20dip"
 		      android:layout_marginBottom="5dip"
 		      style="@style/EditTextLabel"
-		      android:text="In what ways could we have been more dominating?"
+		      android:text="@string/question_3_label"
 		      android:id="@+id/question_3" />
 	     <EditText 
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
 		      android:layout_marginLeft="20dip"
 		   	  android:layout_marginRight="20dip"
-		   	  android:hint="answer"
+		   	  android:hint="@string/question_3_hint"
 		   	  style="@style/EditText"
 		   	  android:id="@+id/question_3_hint" />	
 		  <Button 
 		      android:layout_width="100dip"
 		      android:layout_height="40dip"
-		      android:text="Submit"
+		      android:text="@string/submit_button_label"
 		      android:layout_marginRight="20dip"
 		      android:layout_marginTop="10dip"
 		      android:layout_gravity="right"
@@ -162,5 +158,5 @@
 	      android:layout_height="wrap_content"
 	      android:layout_centerInParent="true"
 	      android:id="@+id/detail_greeting"
-	      android:text="Select contact on left side." /> 
+	      android:text="@string/detail_greeting_msg" />
 </RelativeLayout>
