@@ -165,7 +165,7 @@ public class ContactListFragment extends ListFragment implements RestConsumer {
 	@Override
 	public void onRestClientAvailable(RestClient client) {
 		this.mRestClient = client;
-		RestUtil.sendRequest(mRestClient, "Select id, name from Contact",  getString(R.string.api_version), this);
+		RestUtil.sendRequest(mRestClient, "Select id, firstname, lastname from Contact",  getString(R.string.api_version), this);
 	}
 
 	@Override

@@ -33,7 +33,9 @@ public class ContactJSONArrayAdapter extends ArrayAdapter<Contact> {
 			textView.setBackgroundColor(ctx.getResources().getColor(android.R.color.white));
 		
 		textView.setHeight(70);
-		textView.setText(getItem(position).getName());
+		String firstName = getItem(position).getFirstName();
+		String lastName = getItem(position).getLastName();
+		textView.setText(lastName+", "+firstName);
 	
 		return textView;
 	}

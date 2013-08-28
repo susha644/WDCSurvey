@@ -46,9 +46,16 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 	 * The content this fragment is presenting.
 	 */
 	private static final String OBJECT_TYPE = "Contact";
-	private static final List<String> FIELD_LIST = new ArrayList<String>() {{
+	private static final List<String> FIELD_LIST = new ArrayList<String>() {/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+	{
 		add("Id");
 		add("Name");
+		add("Firstname");
+		add("Lastname");
 		add("Account.name");
 		add("Title");
 		add("Email");

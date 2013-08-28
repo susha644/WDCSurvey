@@ -19,6 +19,14 @@ public class Contact {
 		return getStringPropertySafe("Name", "No Name");
 	}
 	
+	public String getFirstName() {
+		return getStringPropertySafe("FirstName", "No FirstName");
+	}
+	
+	public String getLastName() {
+		return getStringPropertySafe("LastName", "No LastName");
+	}
+	
 	public String getId() {
 		return getStringPropertySafe("Id", "No Id");
 	}
@@ -60,7 +68,7 @@ public class Contact {
 		try {
 			value = holder.getString(prop);
 		} catch (JSONException e) {
-			Log.e(TAG, "Error getting contact name", e);
+			Log.e(TAG, "Error getting"+ prop, e);
 		}
 		if (value.equals("null"))
 			value = "";
