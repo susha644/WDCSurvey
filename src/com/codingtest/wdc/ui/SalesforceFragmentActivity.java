@@ -1,4 +1,4 @@
-package com.codingtest.wdc;
+package com.codingtest.wdc.ui;
 
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.codingtest.wdc.R;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.ClientManager.LoginOptions;

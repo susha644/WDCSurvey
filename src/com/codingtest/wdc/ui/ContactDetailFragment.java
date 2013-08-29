@@ -1,7 +1,6 @@
 package com.codingtest.wdc.ui;
 
 import java.util.ArrayList;
-import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -161,6 +160,9 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 
 	@Override
 	public void onErrorResult(Exception exception) {
+		if (mProgressDialog.isShowing()) 
+			mProgressDialog.dismiss();
+
 		String msg = "Error occurred while fetching contacts";
 		Log.e(TAG, msg, exception);
 		Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();	

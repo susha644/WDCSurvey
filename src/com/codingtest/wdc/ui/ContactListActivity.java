@@ -31,7 +31,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.codingtest.wdc.R;
-import com.codingtest.wdc.SalesforceFragmentActivity;
 import com.salesforce.androidsdk.rest.RestClient;
 
 /**

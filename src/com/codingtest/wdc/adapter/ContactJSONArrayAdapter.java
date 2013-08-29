@@ -24,14 +24,13 @@ public class ContactJSONArrayAdapter extends ArrayAdapter<Contact> {
 		
 		if (convertView == null) {
 			textView = (TextView) LayoutInflater.from(ctx).inflate(R.layout.contact_list_textview, null);
-			textView.setBackgroundColor(ctx.getResources().getColor(position % 2 == 0 ? android.R.color.darker_gray : android.R.color.white));
+			textView.setHeight(70);
 		} else {
 			textView = (TextView) convertView;
 		}
 		
+		textView.setBackgroundColor(ctx.getResources().getColor(position % 2 == 0 ? android.R.color.darker_gray : android.R.color.white));
 		
-		textView.setHeight(70);
-
 		String firstName = getItem(position).getFirstName();
 		String lastName = getItem(position).getLastName();
 		textView.setText(lastName + ", " + firstName);

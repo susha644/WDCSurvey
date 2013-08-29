@@ -9,8 +9,6 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import com.salesforce.androidsdk.auth.HttpAccess;
 import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestClient.AsyncRequestCallback;
