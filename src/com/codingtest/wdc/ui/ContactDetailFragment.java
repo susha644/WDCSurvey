@@ -178,12 +178,19 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 		EditText question3EditText = (EditText) mRootView.findViewById(R.id.question_3_hint);
 		
 		Map<String, Object> surveyValues = new HashMap<String, Object>();
-		surveyValues.put("Question_1__c", question1EditText.getText().toString());
-		surveyValues.put("Question_2__c", question2EditText.getText().toString());
-		surveyValues.put("Question_3__c", question3EditText.getText().toString());
+		String q1Answer = question1EditText.getText().toString();
+		String q2Answer = question2EditText.getText().toString();
+		String q3Answer = question3EditText.getText().toString();
+		if (q1Answer != null)
+			surveyValues.put("Question_1__c", q1Answer);
+		if (q2Answer != null)
+			surveyValues.put("Question_2__c", q2Answer);
+		if (q3Answer != null)
+			surveyValues.put("Question_3__c", q3Answer);
 
-		
-		RestUtil.updateSObject(mClient, getString(R.string.api_version), OBJECT_TYPE, mContactId, surveyValues, this);
+		// Makes REST call only if at least one of the questions are answered
+		if (surveyValues.size() > 0)
+			RestUtil.updateSObject(mClient, getString(R.string.api_version), OBJECT_TYPE, mContactId, surveyValues, this);
 
 	}
 }
