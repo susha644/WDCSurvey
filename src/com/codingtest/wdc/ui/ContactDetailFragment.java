@@ -1,6 +1,7 @@
 package com.codingtest.wdc.ui;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -181,16 +182,23 @@ public class ContactDetailFragment extends Fragment implements RestConsumer, and
 		String q1Answer = question1EditText.getText().toString();
 		String q2Answer = question2EditText.getText().toString();
 		String q3Answer = question3EditText.getText().toString();
-		if (q1Answer != null)
+
+		if (q1Answer != null && !"".equals(q1Answer))
 			surveyValues.put("Question_1__c", q1Answer);
-		if (q2Answer != null)
+		if (q2Answer != null && !"".equals(q1Answer))
 			surveyValues.put("Question_2__c", q2Answer);
-		if (q3Answer != null)
+		if (q3Answer != null && !"".equals(q1Answer))
 			surveyValues.put("Question_3__c", q3Answer);
 
 		// Makes REST call only if at least one of the questions are answered
 		if (surveyValues.size() > 0)
 			RestUtil.updateSObject(mClient, getString(R.string.api_version), OBJECT_TYPE, mContactId, surveyValues, this);
+		else {
+			String msg = "Please answer at least one of the survey questions";
+			Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+		}
+		
+			
 
 	}
 }
