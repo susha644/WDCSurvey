@@ -108,4 +108,9 @@ public class ContactListActivity extends SalesforceFragmentActivity implements C
 			startActivity(detailIntent);
 		}
 	}
+	
+	// USED FOR TESTING
+	boolean isTwoPane() {
+		return mTwoPane;
+	}
 }
